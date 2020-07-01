@@ -15,8 +15,8 @@ aitextgen/
 
 
 # Forced
-!/poesie/poesie_clean.txt!
-!/roman/roman_clean.txt!
+!/poesie/poesie_1/poesie_clean.txt
+
 
 # Python test
 *_old.py
