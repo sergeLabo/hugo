@@ -64,18 +64,19 @@ def run():
                     if len_max > 200: len_max = 200
                     if temp < 0: temp = 0.1
                     if temp > 2: temp = 2
-                    new = 1
+                    bot.new = 1
 
         if bot.new == 1:
             len_max = 20
-            temp = 1.5
+            temp = 0.8
+            text_list = poesie.get_irc_response(question, len_max, temp)
             try:
                 text_list = poesie.get_irc_response(question, len_max, temp)
             except:
                 text_list = ["Je ne comprends pas la question!"]
 
             # Envoi de la réponse
-            print("\nQuestion n°:", num)
+            print("\nN°:", num)
             print("Question:", bot.quest_rep[num])
             print("Response:", text_list[0])
 
@@ -87,17 +88,24 @@ def run():
             bot.num += 1
 
             # Boucle
-            resp = ""
-            for item in text_list[0]:
-                resp += item
-            resp = resp.replace("\n", " ")
-            mots = resp.split(" ")
-            rl = mots[-3:]
-            resp = rl[0] + " " + rl[1] + " " + rl[2]
+            mots = text_list[0].replace("\n", " ").split(" ")
+
+            # Récup de x mots
+            nbmots = 3
+            fin_list = mots[-nbmots:]
+            fin = ""
+            for i in range(nbmots):
+                fin += fin_list[i] + " "
+            print("Nouvelle question:", fin)
+
+            # Nouvelle question
             sleep(20)
-            question = resp
             num = bot.num
-            bot.quest_rep[num] = [resp]
+            # pour relance
+            if num > 0:
+                bot.quest_rep[num] = [fin]  # liste
+                question = fin # str
+
 
 
 if __name__ == '__main__':

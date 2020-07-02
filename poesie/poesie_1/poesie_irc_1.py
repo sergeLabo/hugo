@@ -46,6 +46,8 @@ class PoesieIrcBot(irc.bot.SingleServerIRCBot):
             self.die()
         elif "relance" in cmd:
             self.new = 0
+            self.num = 0
+            self.quest_rep = {}
         else:
             self.question = cmd
             self.quest_rep[self.num] = [self.question]
