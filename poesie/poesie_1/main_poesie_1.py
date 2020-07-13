@@ -84,7 +84,7 @@ def run():
             for line in lines:
                 print(f"envoi de: {line}")
                 bot.send_pubmsg(line)
-                sleep(0.2)
+                sleep(0.5)
             bot.num += 1
 
             # Boucle

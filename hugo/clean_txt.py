@@ -28,7 +28,7 @@ for line in lines:
         good = 0
 
     # Mots interdits
-    for item in [   '[', ']', '_', '*', '•',
+    for item in [   '[', ']', '_', '*', '•', '{', '}',
                     'MDSERIES',
                     'PREMIÈRE SÉRIE',
                     'NOUVELLE SÉRIE',

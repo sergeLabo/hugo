@@ -1,0 +1,18 @@
+--- train_ori.py	2020-07-08 10:09:31.652339000 +0200
++++ train.py	2020-07-10 13:22:23.276263727 +0200
+@@ -154,6 +154,15 @@
+ 
+         desc = f"Loss: {current_loss:.3f} — Avg: {avg_loss:.3f}"
+ 
++        # Ajout serge Save loss
++        if self.steps % self.save_every == 0 or self.steps == 1:
++            print("Enregistrement du loss dans loss.txt")
++            fichier = "./loss.txt"
++            data = str(self.steps) + " "  + desc + "\n"
++            with open(fichier, "a") as fd:
++                fd.write(data)
++            fd.close()
++
+         if self.steps % self.progress_bar_refresh_rate == 0:
+             if self.gpu:
+                 desc += f" — GPU Mem: {get_gpu_memory_map()['gpu_0']} MB"
